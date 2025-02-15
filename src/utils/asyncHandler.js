@@ -1,26 +1,27 @@
-// method both are are same 
-
 const asyncHandler = (requestHandler) => {
-  return  (req,res,next) => {
-        Promise.resolve(requestHandler(req,res,next))
-        .catch((err)=> next(err))
-        
-    }
+  return (req, res, next) => {
+      Promise.resolve(requestHandler(req, res, next)).catch((err) => next(err))
+  }
 }
- 
-export {asyncHandler}    
 
 
-// this is try catch   anorher method
+export { asyncHandler }
 
-// const asyncHandler = (fn) => async (req, res,next )=> {
-//     try{
+
+
+
+// const asyncHandler = () => {}
+// const asyncHandler = (func) => () => {}
+// const asyncHandler = (func) => async () => {}
+
+
+// const asyncHandler = (fn) => async (req, res, next) => {
+//     try {
 //         await fn(req, res, next)
-//     }  catch (error) {
-//         res.status(error.code || 500).json ({
-//             success:false,
-//             message: error.message
+//     } catch (error) {
+//         res.status(err.code || 500).json({
+//             success: false,
+//             message: err.message
 //         })
 //     }
 // }
-
